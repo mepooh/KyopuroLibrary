@@ -6,7 +6,7 @@
 
 #define outln(s) cout << s << endl
 #define outss(s) cout << s << " "
-#define outendl  cout << endl;
+#define outendl  cout << endl
 
 #define YES(n) cout << ((n) ? "YES" : "NO") << endl
 #define Yes(n) cout << ((n) ? "Yes" : "No") << endl
