@@ -9,8 +9,8 @@
 #define outendl  cout << endl;
 
 #define YES(n) cout << ((n) ? "YES" : "NO") << endl
-#define Yes(n) cout << ((n) ? "Yes" : "No") << endl;
-#define yes(n) cout << ((n) ? "yes" : "no") << endl;
+#define Yes(n) cout << ((n) ? "Yes" : "No") << endl
+#define yes(n) cout << ((n) ? "yes" : "no") << endl
 
 #define vecin(v) rep(i, (v).size()) cin >> (v)[i]
 
