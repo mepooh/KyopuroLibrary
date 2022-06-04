@@ -1,41 +1,47 @@
 #include <bits/stdc++.h>
-#define rep(i, n) for (int i = 0; i < (n); i++)
+#define rep(i, n) for (ll i = 0; i < (n); i++)
+#define repp(i,a,n) for(ll i = (a); i < (n); i++)
+
+#define srt(v) sort((v).begin(), (v).end())
+
+#define outln(s) cout << s << endl
+#define outss(s) cout << s << " "
+#define outendl  cout << endl;
+
+#define YES(n) cout << ((n) ? "YES" : "NO") << endl
+#define Yes(n) cout << ((n) ? "Yes" : "No") << endl;
+#define yes(n) cout << ((n) ? "yes" : "no") << endl;
+
+#define vecin(v) rep(i, (v).size()) cin >> (v)[i]
+
+#define vec vector
 using namespace std;
 typedef long long ll;
 typedef unsigned long long ull;
 typedef long double ld;
 
-ll gcd(ll a, ll b) {
-    if(a % b == 0) {
-        return b;
-    } else {
-        return gcd(b, a%b);
+int main(){
+    ll n, k; cin >> n >> k;
+    vec<ll> a(n); vecin(a);
+
+    map<ll, vec<ll>> mp;
+    rep(i, n) {
+        ll temp = i % k;
+        mp[temp].push_back(a[i]);
     }
-}
 
-ll lcm(ll a, ll b) {
-    return a*b / gcd(a, b);
-}
+    rep(i, k) srt(mp[i]);
 
-int main(){   
-    ll n, a, b; cin >> n >> a >> b;
-    ll sum = n * (1 + n) / 2;
+    vec<ll> sorted(n);
+    rep(i, k) {
+        rep(j, mp[i].size()) sorted[k*j + i] = mp[i][j];
+    }
 
-    
-    ll nn = n / a;
-    ll max = (n / a) * a;
-    ll asum = nn * (a + max) / 2;
+    bool ans = true;
+    rep(i, n) {
+        if(i == 0) continue;
+        if(sorted[i-1] > sorted[i]) ans = false;
+    }
 
-    nn = n / b;
-    max = (n / b) * b;
-    ll bsum = nn * (b + max) / 2; 
-
-    ll ab = lcm(a, b);
-    nn = n / ab;
-    max = (n / ab) * ab;
-    ll absum = nn * (ab + max) / 2;
-
-    sum = sum - asum - bsum + absum;
-
-    cout << sum << endl;
+    Yes(ans);
 }
