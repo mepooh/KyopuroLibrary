@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <pthread.h>
 #include <utility>
 #define rep(i, n) for (ll i = 0; i < (n); i++)
 #define repp(i,a,n) for(ll i = (a); i < (n); i++)
@@ -18,6 +19,9 @@
 #define vecprint(v) rep(i, (v).size()) cout << (v)[i]
 
 #define vec vector
+
+#define LLMAX 9223372036854775803
+
 using namespace std;
 typedef long long ll;
 typedef unsigned long long ull;
@@ -57,5 +61,33 @@ ll lcm(ll a, ll b) {
 }
 
 int main(){
+    ll x, a, d, n; cin >> x >> a >> d >> n;
 
+    if(d < 0) {
+        // a[n] < a[0] の場合 a[0] < a[n] にする
+        a = a + d * (n - 1);
+        d = d * -1;
+    }
+
+    ll ok = 0; // 解が存在する値
+    ll ng = n+1; // 解が存在しない値
+    ll mid;
+    while(abs(ok - ng) > 1) {
+        mid = (ok + ng) / 2;
+        if(a+(mid*d) <= x) { // 見ているところが安全圏かどうか判定
+            ok = mid;
+        } else {
+            ng = mid;
+        }
+    }
+
+    ll mn = LLMAX;
+
+    rep(i, 9) {
+        ll nn = mid + i - 5;
+        if(nn < 0 || n-1 < nn) continue;
+        mn = min(mn, a+(d*nn) - x);
+    }
+
+    cout << mn << endl;
 }
