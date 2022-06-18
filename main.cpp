@@ -16,7 +16,7 @@
 #define yes(n) cout << ((n) ? "yes" : "no") << endl
 
 #define vecin(v) rep(i, (v).size()) cin >> (v)[i]
-#define vecprint(v) rep(i, (v).size()) cout << (v)[i]
+#define vecprint(v) rep(i, (v).size()) cout << (v)[i] << " "
 
 #define vec vector
 
@@ -46,48 +46,34 @@ struct UnionFind{
     ll size(int x) {return -d[root(x)]; }
 };
 
-// a と b の最大公約数を求める
-ll gcd(ll a, ll b) {
-    if(a % b == 0) {
-        return b;
-    } else {
-        return gcd(b, a%b);
-    }
-}
-
-// a と b の最小公倍数を求める
-ll lcm(ll a, ll b) {
-    return a*b / gcd(a, b);
-}
-
 int main(){
-    ll x, a, d, n; cin >> x >> a >> d >> n;
+    ll n; cin >> n;
 
-    if(d < 0) {
-        // a[n] < a[0] の場合 a[0] < a[n] にする
-        a = a + d * (n - 1);
-        d = d * -1;
+    map<ll, ll> start;
+    map<ll, ll> end;
+    rep(i, n) {
+        ll l, r; cin >> l >> r;
+        start[l]++;
+        end[r]++;
     }
 
-    ll ok = 0; // 解が存在する値
-    ll ng = n+1; // 解が存在しない値
-    ll mid;
-    while(abs(ok - ng) > 1) {
-        mid = (ok + ng) / 2;
-        if(a+(mid*d) <= x) { // 見ているところが安全圏かどうか判定
-            ok = mid;
-        } else {
-            ng = mid;
+    ll p = 0;
+
+    ll startMax = start.rbegin()->first;
+    ll endMax = end.rbegin()->first;
+    ll mx = max(startMax, endMax) + 10;
+
+    rep(i, mx) {
+        ll prev = p;
+        p += start[i];
+        p -= end[i];
+
+        if(prev <= 0 && 0 < p) {
+            cout << i << " ";
+        }
+
+        if(0 < prev && p <= 0) {
+            cout << i << endl;
         }
     }
-
-    ll mn = LLMAX;
-
-    rep(i, 9) {
-        ll nn = mid + i - 5;
-        if(nn < 0 || n-1 < nn) continue;
-        mn = min(mn, a+(d*nn) - x);
-    }
-
-    cout << mn << endl;
 }
