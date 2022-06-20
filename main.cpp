@@ -1,6 +1,12 @@
 #include <bits/stdc++.h>
 #include <pthread.h>
 #include <utility>
+
+using namespace std;
+typedef long long ll;
+typedef unsigned long long ull;
+typedef long double ld;
+
 #define rep(i, n) for (ll i = 0; i < (n); i++)
 #define repp(i,a,n) for(ll i = (a); i < (n); i++)
 
@@ -14,6 +20,7 @@
 #define YES(n) cout << ((n) ? "YES" : "NO") << endl
 #define Yes(n) cout << ((n) ? "Yes" : "No") << endl
 #define yes(n) cout << ((n) ? "yes" : "no") << endl
+#define OK(n) cout << ((n) ? "OK" : "NG") << endl
 
 #define vecin(v) rep(i, (v).size()) cin >> (v)[i]
 #define vecprint(v) rep(i, (v).size()) cout << (v)[i] << " "
@@ -22,10 +29,7 @@
 
 #define LLMAX 9223372036854775803
 
-using namespace std;
-typedef long long ll;
-typedef unsigned long long ull;
-typedef long double ld;
+
 
 struct UnionFind{
     vector<ll> d;
@@ -47,33 +51,26 @@ struct UnionFind{
 };
 
 int main(){
-    ll n; cin >> n;
+    ll n, q; cin >> n >> q;
+    vec<ll> a(n); vecin(a);
+    vec<ll> x(q); vecin(x);
 
-    map<ll, ll> start;
-    map<ll, ll> end;
-    rep(i, n) {
-        ll l, r; cin >> l >> r;
-        start[l]++;
-        end[r]++;
-    }
+    srt(a);
 
-    ll p = 0;
+    rep(i, q) {
 
-    ll startMax = start.rbegin()->first;
-    ll endMax = end.rbegin()->first;
-    ll mx = max(startMax, endMax) + 10;
-
-    rep(i, mx) {
-        ll prev = p;
-        p += start[i];
-        p -= end[i];
-
-        if(prev <= 0 && 0 < p) {
-            cout << i << " ";
+        ll ok = n; ll ng = -1;
+        ll mid = 0;
+        while(abs(ok-ng) > 1) {
+            mid = (ok + ng) / 2;
+            if(x[i] <= a[mid]) {
+                ok = mid;
+            } else {
+                ng = mid;
+            }
         }
 
-        if(0 < prev && p <= 0) {
-            cout << i << endl;
-        }
+        cout << n - ok << endl;
+
     }
 }
