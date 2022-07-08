@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 #include <pthread.h>
 #include <utility>
+#include <bitset>
 
 using namespace std;
 typedef long long ll;
@@ -50,27 +51,19 @@ struct UnionFind{
     ll size(int x) {return -d[root(x)]; }
 };
 
-int main(){
-    ll n, q; cin >> n >> q;
-    vec<ll> a(n); vecin(a);
-    vec<ll> x(q); vecin(x);
+int main() {
+    while(1) {
+        ll n; cin >> n;
+        if (n == 0) break;
+        vec<ll> a(n);
+        rep(i, n) cin >> a[i];
 
-    srt(a);
-
-    rep(i, q) {
-
-        ll ok = n; ll ng = -1;
-        ll mid = 0;
-        while(abs(ok-ng) > 1) {
-            mid = (ok + ng) / 2;
-            if(x[i] <= a[mid]) {
-                ok = mid;
-            } else {
-                ng = mid;
-            }
+        // find max
+        ll max = -1;
+        rep(i, n) {
+            if(max < a[i]) max = a[i];
         }
 
-        cout << n - ok << endl;
-
+        cout << 100 << endl;
     }
 }
