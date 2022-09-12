@@ -9,19 +9,20 @@ typedef unsigned long long ull;
 typedef long double ld;
 
 #define rep(i, n) for (ll i = 0; i < (n); i++)
-#define repp(i,a,n) for(ll i = (a); i < (n); i++)
+#define repp(i, a, n) for(ll i = (a); i < (n); i++)
 
 #define srt(v) sort((v).begin(), (v).end())
 #define srtg(v) sort((v).begin(), (v).end(), greater<ll>())
 
 #define outln(s) cout << s << endl
 #define outss(s) cout << s << " "
-#define outendl  cout << endl
+#define outen    cout << endl
 
 #define YES(n) cout << ((n) ? "YES" : "NO") << endl
 #define Yes(n) cout << ((n) ? "Yes" : "No") << endl
 #define yes(n) cout << ((n) ? "yes" : "no") << endl
 #define OK(n) cout << ((n) ? "OK" : "NG") << endl
+#define ok(n) cout << ((n) ? "ok" : "ng") << endl
 
 #define vecin(v) rep(i, (v).size()) cin >> (v)[i]
 #define vecprint(v) rep(i, (v).size()) cout << (v)[i] << " "
@@ -52,18 +53,14 @@ struct UnionFind{
 };
 
 int main() {
-    while(1) {
-        ll n; cin >> n;
-        if (n == 0) break;
-        vec<ll> a(n);
-        rep(i, n) cin >> a[i];
+    string s, t; cin >> s >> t;
 
-        // find max
-        ll max = -1;
-        rep(i, n) {
-            if(max < a[i]) max = a[i];
+    bool ans = true;
+    rep(i, s.length()) {
+        if(s[i] != t[i]) {
+            ans = false; break;
         }
-
-        cout << 100 << endl;
     }
+
+    Yes(ans);
 }
