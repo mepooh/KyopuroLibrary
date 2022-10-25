@@ -28,6 +28,7 @@ typedef long double ld;
 #define vecprint(v) rep(i, (v).size()) cout << (v)[i] << " "
 
 #define vec vector
+#define tvec(name, type, y, x) vector<vector<type>> name((y), vector<type>(x))
 
 #define LLMAX 9223372036854775803
 
@@ -53,14 +54,5 @@ struct UnionFind{
 };
 
 int main() {
-    string s, t; cin >> s >> t;
-
-    bool ans = true;
-    rep(i, s.length()) {
-        if(s[i] != t[i]) {
-            ans = false; break;
-        }
-    }
-
-    Yes(ans);
+    vector<long long> test(100 * 1024 * 1024);
 }
