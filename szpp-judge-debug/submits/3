@@ -1,0 +1,14 @@
+#include <bits/stdc++.h>
+using namespace std;
+/*
+    while(1)
+*/
+
+int main() {
+    int a; cin >> a;
+    while(1) {
+        a++;
+    }
+    cout << "even" << endl;
+    return 0;
+}

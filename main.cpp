@@ -1,38 +1,34 @@
 #include <bits/stdc++.h>
 #include <pthread.h>
 #include <utility>
-#include <bitset>
-
-using namespace std;
-typedef long long ll;
-typedef unsigned long long ull;
-typedef long double ld;
-
 #define rep(i, n) for (ll i = 0; i < (n); i++)
-#define repp(i, a, n) for(ll i = (a); i < (n); i++)
+#define repp(i,a,n) for(ll i = (a); i < (n); i++)
 
 #define srt(v) sort((v).begin(), (v).end())
 #define srtg(v) sort((v).begin(), (v).end(), greater<ll>())
 
 #define outln(s) cout << s << endl
 #define outss(s) cout << s << " "
-#define outen    cout << endl
+#define outendl  cout << endl
 
 #define YES(n) cout << ((n) ? "YES" : "NO") << endl
 #define Yes(n) cout << ((n) ? "Yes" : "No") << endl
 #define yes(n) cout << ((n) ? "yes" : "no") << endl
-#define OK(n) cout << ((n) ? "OK" : "NG") << endl
-#define ok(n) cout << ((n) ? "ok" : "ng") << endl
 
 #define vecin(v) rep(i, (v).size()) cin >> (v)[i]
 #define vecprint(v) rep(i, (v).size()) cout << (v)[i] << " "
 
 #define vec vector
-#define tvec(name, type, y, x) vector<vector<type>> name((y), vector<type>(x))
 
 #define LLMAX 9223372036854775803
 
+#define chk cout << "check" << endl
+#define dgp(msg) cout << "check: " << msg << endl
 
+using namespace std;
+typedef long long ll;
+typedef unsigned long long ull;
+typedef long double ld;
 
 struct UnionFind{
     vector<ll> d;
@@ -53,6 +49,47 @@ struct UnionFind{
     ll size(int x) {return -d[root(x)]; }
 };
 
-int main() {
-    vector<long long> test(100 * 1024 * 1024);
+vec<pair<ll, ll>> prime_factorize(ll n) {
+    vec<pair<ll, ll>> ans;
+    for(ll p = 2; p * p <= n; p++) {
+        if(n % p != 0) continue;
+        ll e = 0;
+        while(n % p == 0) {
+            e++;
+            n /= p;
+        }
+        ans.emplace_back(p, e);
+    }
+    if(n != 1) ans.emplace_back(n, 1);
+    return ans;
 }
+
+ll kaijou(ll a) {
+    ll ans = 1;
+    rep(i, a) ans *= a - i;
+    return ans;
+}
+
+ll fn0(ll a, ll b) {
+    ll ans = 0;
+    while(a % b == 0) {
+        a /= b; ans++;
+    }
+    return ans;
+}
+
+ll fn1(ll a, ll b) {
+    // a を b で何回割れるかを返す関数
+    if(a % b != 0) return -1;
+    if(a == 0) return 0;
+    return fn0(a,b) + fn1(a-b, b);
+}
+
+
+int main(){
+    ll n, p; cin >> n >> p;
+
+    ll ans = (100 * n) / (100 + p);
+
+    cout <<  ans % 998244353 << endl;
+}   

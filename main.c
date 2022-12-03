@@ -1,28 +1,68 @@
-#include <stdio.h> 
+#include <stdio.h>
 
-int main(void) 
-{ 
-    int a[2][2], b[2][2]; 
+static int normal_year[12]  = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+static int special_year[12] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-    for(int i = 0; i < 2; i++) {
-        for(int j = 0; j < 2; j++) {
-            scanf("%d", &a[i][j]);
+void decrement_date(int *y, int *m, int *d) {
+    *d -= 1;
+    if(*d == 0) {
+        *m -= 1;
+        if(*m == 0) {
+            *m = 12; *y -= 1;
+        }
+        if(*y % 4 == 0) {
+            *d = special_year[*m-1];
+        } else {
+            *d = normal_year[*m-1];
         }
     }
-     
-    printf("a\n"); 
-    printf("%d %d\n",a[0][0],a[0][1]); 
-    printf("%d %d\n",a[1][0],a[1][1]); 
+}
 
-    for(int i = 0; i < 2; i++) {
-        for(int j = 0; j < 2; j++) {
-            b[i][j] = a[j][i];
+void increment_date(int *y, int *m, int *d) {
+    *d += 1;
+    if(*y % 4 == 0) {
+        if(*d > special_year[*m-1]) {
+            *d = 1; *m += 1;
+            if(*m > 12) {
+                *m = 1; *y += 1;
+            }
+        }
+    } else {
+        if(*d > normal_year[*m-1]) {
+            *d = 1; *m += 1;
+            if(*m > 12) {
+                *m = 1; *y += 1;
+            }
         }
     }
+}
 
-    printf("b\n"); 
-    printf("%d %d\n",b[0][0],b[0][1]); 
-    printf("%d %d\n",b[1][0],b[1][1]); 
+int main(void) {
+    int y, m, d;
+    printf("Date\n");
+    printf("year : ");  scanf("%d",&y);
+    printf("month: ");  scanf("%d",&m);
+    printf("day  : ");  scanf("%d",&d);
 
-    return 0; 
+    int dec_y = y;
+    int dec_m = m;
+    int dec_d = d;
+    decrement_date(&dec_y, &dec_m, &dec_d);
+
+    printf("Decrement result\n");
+    printf("year : %d\n", dec_y);
+    printf("month: %d\n", dec_m);
+    printf("day  : %d\n", dec_d);
+
+    int inc_y = y;
+    int inc_m = m;
+    int inc_d = d;
+    increment_date(&inc_y, &inc_m, &inc_d);
+
+    printf("Increment result\n");
+    printf("year : %d\n", inc_y);
+    printf("month: %d\n", inc_m);
+    printf("day  : %d\n", inc_d);
+
+    return 0;
 }

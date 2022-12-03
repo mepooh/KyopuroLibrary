@@ -1,0 +1,11 @@
+#include <bits/stdc++.h>
+using namespace std;
+/*
+    CE
+*/
+
+int main() {
+    int a = "string";
+    cout << a << endl;
+    return 0;
+}
