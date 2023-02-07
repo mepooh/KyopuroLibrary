@@ -6,6 +6,10 @@ import (
 	"strings"
 )
 
+type kyoute struct {
+
+}
+
 func main() {
 	by := []byte("hoge foo var\nboon")
 	sl := strings.Fields(string(by))

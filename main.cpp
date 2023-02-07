@@ -87,9 +87,5 @@ ll fn1(ll a, ll b) {
 
 
 int main(){
-    ll n, p; cin >> n >> p;
-
-    ll ans = (100 * n) / (100 + p);
-
-    cout <<  ans % 998244353 << endl;
+    cout << "Hello world" << endl;
 }   
