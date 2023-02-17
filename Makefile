@@ -10,3 +10,12 @@ run:
 
 txt:
 	make run > result.txt
+
+cmp: 
+	make comp
+
+c:
+	make comp
+
+r:
+	make run

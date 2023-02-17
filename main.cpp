@@ -6,11 +6,12 @@ using namespace std;
 typedef long long ll;
 typedef unsigned long long ull;
 typedef long double ld;
+
 #define LLMAX 9223372036854775803
 
 // Repeat
-#define rep(i, n) for (ll i = 0; i < (n); i++)
-#define repi(i, a, b) for(ll i = (a); i < (b); i++)
+#define rep(i, n) for (ll i = 0; i < ll(n); i++)
+#define repi(i, a, b) for(ll i = ll(a); i < ll(b); i++)
 
 // Print yes/no
 #define YES(n) cout << ((n) ? "YES" : "NO") << endl
@@ -20,10 +21,14 @@ typedef long double ld;
 
 // Vector
 #define vec vector
-#define vecin(v) rep(i, (v).size()) cin >> (v)[i]
-#define vecout(v) rep(i, (v).size()) cout << (v)[i] << " "
-#define vecall(v) (x).begin(),(x).end()
+#define vin(v) rep(vin_cnt, (v).size()) cin >> (v)[vin_cnt]
+#define vout(v) rep(vout_cnt, (v).size()) cout << (v)[vout_cnt] << " "; cout << endl
+#define vecin(v, i) rep(i, (v).size()) cin >> (v)[i]
+#define vecout(v, i) rep(i, (v).size()) cout << (v)[i] << " "; cout << endl
+#define vall(v) (x).begin(),(x).end()
 #define pb push_back
+#define SZ size()
+#define subvec(v, l, r) {(v).begin()+(l), (v).begin()+(r)}
 
 // Sort
 #define srt(v) sort((v).begin(), (v).end())
@@ -31,6 +36,8 @@ typedef long double ld;
 
 // Pair 
 #define mp make_pair
+#define F first
+#define S second
 
 // Debug
 #define ck cout << "check" << endl
@@ -55,6 +62,16 @@ struct UnionFind{
     ll size(int x) {return -d[root(x)]; }
 };
 
+vec<vec<ll>> BitAll(ll n) {
+    vec<vec<ll>> result;
+    for(ll bit = 0; bit < (1<<n); ++bit) {
+        vec<ll> s;
+        for(ll i = 0; i < n; ++i) if(bit & (1<<i)) s.push_back(i);
+        result.push_back(s);
+    }
+    return result;
+}
+
 int main(){
-    cout << "Hello world" << endl;
+    
 }   
