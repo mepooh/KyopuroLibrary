@@ -28,7 +28,7 @@ typedef long double ld;
 #define vecin(v, i) rep(i, (v).size()) cin >> (v)[i]
 #define vecout(v, i) rep(i, (v).size()) cout << (v)[i] << " "; cout << endl
 #define vall(v) (x).begin(),(x).end()
-#define pb push_back
+#define PB push_back
 #define SZ size()
 #define subvec(v, l, r) {(v).begin()+(l), (v).begin()+(r)}
 
