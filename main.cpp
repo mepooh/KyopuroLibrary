@@ -11,13 +11,15 @@ typedef long double ld;
 
 // Repeat
 #define rep(i, n) for (ll i = 0; i < ll(n); i++)
-#define repi(i, a, b) for(ll i = ll(a); i < ll(b); i++)
+#define repi(i, fm, to) for(ll i = ll(fm); i < ll(to); i++)
 
-// Print yes/no
+// Print
 #define YES(n) cout << ((n) ? "YES" : "NO") << endl
 #define Yes(n) cout << ((n) ? "Yes" : "No") << endl
 #define yes(n) cout << ((n) ? "yes" : "no") << endl
+#define AC(n) cout << ((n) ? "AC" : "WA") << endl
 #define print(msg) cout << (msg) << endl
+#define sankou(flag, t, f) cout << ((flag) ? string(t) : string(f)) << endl
 
 // Vector
 #define vec vector
@@ -36,12 +38,10 @@ typedef long double ld;
 
 // Pair 
 #define mp make_pair
-#define F first
-#define S second
 
 // Debug
 #define ck cout << "check" << endl
-#define dp(msg) cout << "check: " << (msg) << endl
+#define ck(msg) cout << "check: " << (msg) << endl
 
 struct UnionFind{
     vector<ll> d;
@@ -72,6 +72,15 @@ vec<vec<ll>> BitAll(ll n) {
     return result;
 }
 
-int main(){
-    
-}   
+int main() {
+    string S; cin >> S;
+    bool east = false, west = false, south = false, north = false;
+    rep(i, S.length()) {
+        if(S[i] == 'E') east = true;
+        if(S[i] == 'W') west = true;
+        if(S[i] == 'S') south = true;
+        if(S[i] == 'N') north = true;
+    } 
+
+    Yes(!(east ^ west) && !(south ^ north));
+}  
