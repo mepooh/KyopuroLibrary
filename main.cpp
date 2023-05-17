@@ -12,6 +12,7 @@ typedef long double ld;
 // Repeat
 #define rep(i, n) for (ll i = 0; i < ll(n); i++)
 #define repi(i, fm, to) for(ll i = ll(fm); i < ll(to); i++)
+#define LN length()
 
 // Print
 #define YES(n) cout << ((n) ? "YES" : "NO") << endl
