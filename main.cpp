@@ -8,10 +8,12 @@ typedef unsigned long long ull;
 typedef long double ld;
 
 #define LLMAX 9223372036854775803
+#define PI M_PI
 
 // Repeat
 #define rep(i, n) for (ll i = 0; i < ll(n); i++)
-#define repi(i, fm, to) for(ll i = ll(fm); i < ll(to); i++)
+#define reps(i, fm, to) for(ll i = ll(fm); i < ll(to); i++)
+#define fore(row, arr) for(auto& row: arr)
 #define LN length()
 
 // Print
@@ -20,7 +22,7 @@ typedef long double ld;
 #define yes(n) cout << ((n) ? "yes" : "no") << endl
 #define AC(n) cout << ((n) ? "AC" : "WA") << endl
 #define print(msg) cout << (msg) << endl
-#define sankou(flag, t, f) cout << ((flag) ? string(t) : string(f)) << endl
+#define iif(flag, t, f) cout << ((flag) ? string(t) : string(f)) << endl
 
 // Vector
 #define vec vector
@@ -28,21 +30,20 @@ typedef long double ld;
 #define vout(v) rep(vout_cnt, (v).size()) cout << (v)[vout_cnt] << " "; cout << endl
 #define vecin(v, i) rep(i, (v).size()) cin >> (v)[i]
 #define vecout(v, i) rep(i, (v).size()) cout << (v)[i] << " "; cout << endl
-#define vall(v) (x).begin(),(x).end()
+#define all(obj) (obj).begin(),(obj).end()
 #define PB push_back
 #define SZ size()
 #define subvec(v, l, r) {(v).begin()+(l), (v).begin()+(r)}
 
+// Pair
+#define MP make_pair
+#define MT make_tuple
+#define F first
+#define S second
+
 // Sort
 #define srt(v) sort((v).begin(), (v).end())
 #define srtg(v) sort((v).begin(), (v).end(), greater<ll>())
-
-// Pair 
-#define mp make_pair
-
-// Debug
-#define ck cout << "check" << endl
-#define ck(msg) cout << "check: " << (msg) << endl
 
 struct UnionFind{
     vector<ll> d;
@@ -74,14 +75,21 @@ vec<vec<ll>> BitAll(ll n) {
 }
 
 int main() {
-    string S; cin >> S;
-    bool east = false, west = false, south = false, north = false;
-    rep(i, S.length()) {
-        if(S[i] == 'E') east = true;
-        if(S[i] == 'W') west = true;
-        if(S[i] == 'S') south = true;
-        if(S[i] == 'N') north = true;
-    } 
+    ll n, d; cin >> n >> d;
+    vec<ll> t(n); vin(t);
 
-    Yes(!(east ^ west) && !(south ^ north));
+    ll mn = LLMAX;
+    ll tm = -1;
+    bool flag = true;
+
+    rep(i, n-1) {
+        ll tmp = t[i+1] - t[i];
+        if(tmp <= d) {
+            cout << t[i+1] << endl;
+            flag = false;
+            break;
+        }
+    }
+
+    if(flag) cout << -1 << endl;
 }  

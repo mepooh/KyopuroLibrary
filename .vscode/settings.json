@@ -24,6 +24,10 @@
         "unordered_set": "cpp",
         "valarray": "cpp",
         "vector": "cpp",
-        "span": "cpp"
-    }
+        "span": "cpp",
+        "tuple": "cpp"
+    },
+    "cSpell.words": [
+        "vout"
+    ]
 }
