@@ -75,21 +75,5 @@ vec<vec<ll>> BitAll(ll n) {
 }
 
 int main() {
-    ll n, d; cin >> n >> d;
-    vec<ll> t(n); vin(t);
-
-    ll mn = LLMAX;
-    ll tm = -1;
-    bool flag = true;
-
-    rep(i, n-1) {
-        ll tmp = t[i+1] - t[i];
-        if(tmp <= d) {
-            cout << t[i+1] << endl;
-            flag = false;
-            break;
-        }
-    }
-
-    if(flag) cout << -1 << endl;
+    
 }  
