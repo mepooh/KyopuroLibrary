@@ -25,7 +25,9 @@
         "valarray": "cpp",
         "vector": "cpp",
         "span": "cpp",
-        "tuple": "cpp"
+        "tuple": "cpp",
+        "random": "cpp",
+        "chrono": "cpp"
     },
     "cSpell.words": [
         "vout"

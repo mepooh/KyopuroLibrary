@@ -20,7 +20,6 @@ typedef long double ld;
 #define YES(n) cout << ((n) ? "YES" : "NO") << endl
 #define Yes(n) cout << ((n) ? "Yes" : "No") << endl
 #define yes(n) cout << ((n) ? "yes" : "no") << endl
-#define AC(n) cout << ((n) ? "AC" : "WA") << endl
 #define print(msg) cout << (msg) << endl
 #define iif(flag, t, f) cout << ((flag) ? string(t) : string(f)) << endl
 
@@ -28,8 +27,6 @@ typedef long double ld;
 #define vec vector
 #define vin(v) rep(vin_cnt, (v).size()) cin >> (v)[vin_cnt]
 #define vout(v) rep(vout_cnt, (v).size()) cout << (v)[vout_cnt] << " "; cout << endl
-#define vecin(v, i) rep(i, (v).size()) cin >> (v)[i]
-#define vecout(v, i) rep(i, (v).size()) cout << (v)[i] << " "; cout << endl
 #define all(obj) (obj).begin(),(obj).end()
 #define PB push_back
 #define SZ size()
@@ -42,8 +39,15 @@ typedef long double ld;
 #define S second
 
 // Sort
-#define srt(v) sort((v).begin(), (v).end())
-#define srtg(v) sort((v).begin(), (v).end(), greater<ll>())
+#define SORT(v) sort((v).begin(), (v).end())
+#define SORT_G(v) sort((v).begin(), (v).end(), greater<ll>())
+
+// BinarySearch
+#define BinarySearch(arr, value, ans) ll binary_search_ok = arr.size(); ll binary_search_ng = -1; while(abs(binary_search_ok - binary_search_ng) > 1) {ans = (binary_search_ok + binary_search_ng) / 2; if(value <= arr[ans]) binary_search_ok = ans else binary_search_ng = ans;}
+
+// Debug
+#define chk cout << "check" << endl;
+#define check(msg) cout << "check: " << msg << endl
 
 struct UnionFind{
     vector<ll> d;
@@ -75,5 +79,5 @@ vec<vec<ll>> BitAll(ll n) {
 }
 
 int main() {
-    
-}  
+ 
+}
