@@ -17,11 +17,11 @@ typedef long double ld;
 #define LN length()
 
 // Print
+#define print(msg) cout << (msg) << endl
+#define iif(flag, ifTrue, ifFalse) cout << ((flag) ? string(ifTrue) : string(ifFalse)) << endl
 #define YES(n) cout << ((n) ? "YES" : "NO") << endl
 #define Yes(n) cout << ((n) ? "Yes" : "No") << endl
 #define yes(n) cout << ((n) ? "yes" : "no") << endl
-#define print(msg) cout << (msg) << endl
-#define iif(flag, t, f) cout << ((flag) ? string(t) : string(f)) << endl
 
 // Vector
 #define vec vector
@@ -32,7 +32,7 @@ typedef long double ld;
 #define SZ size()
 #define subvec(v, l, r) {(v).begin()+(l), (v).begin()+(r)}
 
-// Pair
+// Pair, Tuple
 #define MP make_pair
 #define MT make_tuple
 #define F first
@@ -60,8 +60,7 @@ struct UnionFind{
         x=root(x);y=root(y);
         if(x==y) return false;
         if(d[x] > d[y]) swap(x,y);
-        d[x]+=d[y];
-        d[y]=x;
+        d[x]+=d[y];d[y]=x;
         return true;
     }
     bool same(int x,int y) { return root(x)==root(y); }
