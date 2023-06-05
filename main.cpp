@@ -3,6 +3,7 @@
 #include <utility>
 
 using namespace std;
+
 typedef long long ll;
 typedef unsigned long long ull;
 typedef long double ld;
@@ -77,6 +78,24 @@ vec<vec<ll>> BitAll(ll n) {
     return result;
 }
 
+ll calc(pair<ll, ll> a, pair<ll, ll> b) {
+    return (a.F-b.F)*(a.F-b.F) + (a.S-b.S)*(a.S-b.S);
+}
+
 int main() {
- 
+    ll n, d; cin >> n >> d;
+    vec<pair<ll, ll>> p(n);
+    rep(i, n) {
+        ll x, y; cin >> x >> y; p[i] = MP(x, y);
+    }
+
+    UnionFind uf (n);
+
+    rep(i, n) {
+        reps(j, i+1, n) {
+            if(calc(p[i], p[j]) <= d*d) uf.unite(i, j);
+        }
+    }
+
+    rep(i, n) Yes(uf.same(0, i));
 }
