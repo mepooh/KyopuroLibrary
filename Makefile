@@ -12,7 +12,7 @@ txt:
 	make run > result.txt
 
 cmp: 
-	make comp
+	make comp 2> cmopile_result.txt
 
 c:
 	make comp

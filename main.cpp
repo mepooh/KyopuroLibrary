@@ -1,6 +1,4 @@
 #include <bits/stdc++.h>
-#include <pthread.h>
-#include <utility>
 
 using namespace std;
 
@@ -44,11 +42,13 @@ typedef long double ld;
 #define SORT_G(v) sort((v).begin(), (v).end(), greater<ll>())
 
 // BinarySearch
-#define BinarySearch(arr, value, ans) ll binary_search_ok = arr.size(); ll binary_search_ng = -1; while(abs(binary_search_ok - binary_search_ng) > 1) {ans = (binary_search_ok + binary_search_ng) / 2; if(value <= arr[ans]) binary_search_ok = ans else binary_search_ng = ans;}
+#define BinarySearch(arr, value, ans) ll binary_search_ok = arr.size(); ll binary_search_ng = -1; while(abs(binary_search_ok - binary_search_ng) > 1) {ans = (binary_search_ok + binary_search_ng) / 2; if(value <= arr[ans]) binary_search_ok = ans; else binary_search_ng = ans;}
+
+#define elif else if
 
 // Debug
-#define chk cout << "check" << endl;
-#define check(msg) cout << "check: " << msg << endl
+// #define chk cout << "check" << endl;
+// #define check(msg) cout << "check: " << msg << endl
 
 struct UnionFind{
     vector<ll> d;
@@ -68,8 +68,8 @@ struct UnionFind{
     ll size(int x) {return -d[root(x)]; }
 };
 
-vec<vec<ll>> BitAll(ll n) {
-    vec<vec<ll>> result;
+vec<vec<ll> > BitAll(ll n) {
+    vec<vec<ll> > result;
     for(ll bit = 0; bit < (1<<n); ++bit) {
         vec<ll> s;
         for(ll i = 0; i < n; ++i) if(bit & (1<<i)) s.push_back(i);
@@ -78,24 +78,6 @@ vec<vec<ll>> BitAll(ll n) {
     return result;
 }
 
-ll calc(pair<ll, ll> a, pair<ll, ll> b) {
-    return (a.F-b.F)*(a.F-b.F) + (a.S-b.S)*(a.S-b.S);
-}
-
 int main() {
-    ll n, d; cin >> n >> d;
-    vec<pair<ll, ll>> p(n);
-    rep(i, n) {
-        ll x, y; cin >> x >> y; p[i] = MP(x, y);
-    }
-
-    UnionFind uf (n);
-
-    rep(i, n) {
-        reps(j, i+1, n) {
-            if(calc(p[i], p[j]) <= d*d) uf.unite(i, j);
-        }
-    }
-
-    rep(i, n) Yes(uf.same(0, i));
+    
 }
