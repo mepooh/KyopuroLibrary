@@ -31,6 +31,9 @@ typedef long double ld;
 #define SZ size()
 #define subvec(v, l, r) {(v).begin()+(l), (v).begin()+(r)}
 
+const ll DX[4] = {1, 0, -1, 0};
+const ll DY[4] = {0, 1, 0, -1};
+
 // Pair, Tuple
 #define MP make_pair
 #define MT make_tuple
@@ -49,6 +52,16 @@ typedef long double ld;
 // Debug
 // #define chk cout << "check" << endl;
 // #define check(msg) cout << "check: " << msg << endl
+
+string toBinary(ll n) {
+    string ans = "";
+    while(n != 0) {
+        if(n % 2 == 0) ans += "0";
+        else ans += "1";
+        n /= 2;
+    }
+    return ans;
+}
 
 struct UnionFind{
     vector<ll> d;
@@ -79,5 +92,4 @@ vec<vec<ll> > BitAll(ll n) {
 }
 
 int main() {
-    
 }
