@@ -92,4 +92,14 @@ vec<vec<ll> > BitAll(ll n) {
 }
 
 int main() {
+    ll n; cin >> n;
+    vec<string> w(n); vin(w);
+
+    vec<string> dic = {"and", "not", "that", "the", "you"};
+
+    bool ans = false;
+
+    rep(i, n) rep(j, 5) if(w[i] == dic[j]) ans = true;
+
+    Yes(ans);
 }
