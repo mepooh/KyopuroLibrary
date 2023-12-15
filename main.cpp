@@ -17,7 +17,6 @@ typedef long double ld;
 
 // Print
 #define print(msg) cout << (msg) << endl
-#define iif(flag, ifTrue, ifFalse) cout << ((flag) ? string(ifTrue) : string(ifFalse)) << endl
 #define YES(n) cout << ((n) ? "YES" : "NO") << endl
 #define Yes(n) cout << ((n) ? "Yes" : "No") << endl
 #define yes(n) cout << ((n) ? "yes" : "no") << endl
@@ -33,6 +32,7 @@ typedef long double ld;
 
 const ll DX[4] = {1, 0, -1, 0};
 const ll DY[4] = {0, 1, 0, -1};
+const string DIRECT = "rdlu";
 
 // Pair, Tuple
 #define MP make_pair
@@ -43,15 +43,6 @@ const ll DY[4] = {0, 1, 0, -1};
 // Sort
 #define SORT(v) sort((v).begin(), (v).end())
 #define SORT_G(v) sort((v).begin(), (v).end(), greater<ll>())
-
-// BinarySearch
-#define BinarySearch(arr, value, ans) ll binary_search_ok = arr.size(); ll binary_search_ng = -1; while(abs(binary_search_ok - binary_search_ng) > 1) {ans = (binary_search_ok + binary_search_ng) / 2; if(value <= arr[ans]) binary_search_ok = ans; else binary_search_ng = ans;}
-
-#define elif else if
-
-// Debug
-// #define chk cout << "check" << endl;
-// #define check(msg) cout << "check: " << msg << endl
 
 string toBinary(ll n) {
     string ans = "";
@@ -91,15 +82,10 @@ vec<vec<ll> > BitAll(ll n) {
     return result;
 }
 
+ll lcm(ll a, ll b) {
+  return a*b / gcd(a, b);
+}
+
 int main() {
-    ll n; cin >> n;
-    vec<string> w(n); vin(w);
-
-    vec<string> dic = {"and", "not", "that", "the", "you"};
-
-    bool ans = false;
-
-    rep(i, n) rep(j, 5) if(w[i] == dic[j]) ans = true;
-
-    Yes(ans);
+    
 }

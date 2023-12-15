@@ -27,7 +27,8 @@
         "span": "cpp",
         "tuple": "cpp",
         "random": "cpp",
-        "chrono": "cpp"
+        "chrono": "cpp",
+        "iosfwd": "cpp"
     },
     "cSpell.words": [
         "vout"
