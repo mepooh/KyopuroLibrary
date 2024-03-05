@@ -14,11 +14,13 @@ for((i=1; i<=$line_cnt; i++)); do
     echo $input_line >> $correct
 done
 
+# 判定
 if diff $output $correct; then
-    echo "結果: OK"
+    echo "判定: OK"
 else
-    echo "結果: NG"
+    echo "判定: NG"
 fi
 
+# 一時ファイル削除
 rm $output
 rm $correct
