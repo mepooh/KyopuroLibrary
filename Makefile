@@ -14,8 +14,8 @@ txt:
 cmp: 
 	make comp 2> cmopile_result.txt
 
-c:
-	make comp
-
 r:
 	make cmp && make exec > result.txt && cat result.txt
+
+c:
+	sh check.sh

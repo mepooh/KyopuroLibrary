@@ -99,11 +99,14 @@ bool is_kaibun(ll x) {
 int main() {
     ll n, t; cin >> n >> t;
     vec<ll> score(n);
+    map<ll, ll> mp;
+    mp[0] = n;
     rep(i, t) {
-        ll a, b; cin >> a >> b;
-        score[a-1] += b;
-        map<ll, ll> cnt;
-        rep(j, n) cnt[score[j]]++;
-        cout << cnt.size() << endl;
+        ll a, b; cin >> a >> b; a--;
+        mp[score[a]]--;
+        if(mp[score[a]] == 0) mp.erase(score[a]);
+        score[a] += b;
+        mp[score[a]]++;
+        cout << mp.size() << endl;
     }
 } 
