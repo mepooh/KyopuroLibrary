@@ -8,9 +8,6 @@ exec:
 run:
 	make comp && make exec
 
-txt:
-	make run > result.txt
-
 cmp: 
 	make comp 2> cmopile_result.txt
 
