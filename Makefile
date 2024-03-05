@@ -18,4 +18,4 @@ c:
 	make comp
 
 r:
-	make run
+	make cmp && make exec > result.txt && cat result.txt

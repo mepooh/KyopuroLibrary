@@ -82,10 +82,28 @@ vec<vec<ll> > BitAll(ll n) {
     return result;
 }
 
-ll lcm(ll a, ll b) {
-  return a*b / gcd(a, b);
+pair<ll, ll> move(pair<ll, ll> loc, char dir) {
+    if(dir == 'L') return MP(loc.F, loc.S-1);
+    if(dir == 'R') return MP(loc.F, loc.S+1);
+    if(dir == 'U') return MP(loc.F-1, loc.S);
+    if(dir == 'D') return MP(loc.F+1, loc.S);
+    return MP(-1, -1);
+}
+
+bool is_kaibun(ll x) {
+    string s = to_string(x);
+    rep(i, s.length()/2) if(s[i] != s[s.length() - i - 1]) return false;
+    return true;
 }
 
 int main() {
-    
-}
+    ll n, t; cin >> n >> t;
+    vec<ll> score(n);
+    rep(i, t) {
+        ll a, b; cin >> a >> b;
+        score[a-1] += b;
+        map<ll, ll> cnt;
+        rep(j, n) cnt[score[j]]++;
+        cout << cnt.size() << endl;
+    }
+} 
